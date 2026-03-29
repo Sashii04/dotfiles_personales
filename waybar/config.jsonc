@@ -1,0 +1,99 @@
+// -*- mode: jsonc -*-
+[{
+    "output": ["HDMI-A-1"],
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 24, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 5, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/mode",
+        "hyprland/scratchpad"
+    ],
+    "modules-center": [
+       "hyprland/window"
+        
+]
+    ,
+    "modules-right": [
+        
+        "network",
+        "custom/swaync",
+        "custom/pavucontrol",
+        "clock",
+        "custom/menu"
+    ],
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "warp-on-scroll": true,
+        "enable-bar-scroll": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "\uFB6E",
+            "3": "",
+            "4": "󰊗",
+            "5": "",
+            "9": "",
+            "10": ""
+        }
+    },
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 40,
+        "all-outputs": true
+    },
+    "custom-swaync": {
+    "format": "🔔",
+    "format-icons":{ 
+        "default": "",
+        "dnd": "",
+        "inhibited": ""
+       }, //cambiar custom-swaync por custom/swaync cuando quieras activar denuevo el menu de notificationes
+   "tooltip": false,
+    "on-click": "swaync-client -t" 
+    },
+    
+    "hyprland/mode": {
+        "format": "{}"
+    },
+    "hyprland/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "custom/pavucontrol": {
+    "format": "󰕾", // Font Awesome speaker icon, or use any icon you like
+    "tooltip": "Open Volume Control",
+    "on-click": "pavucontrol",
+    "on-click-right": "pavucontrol"
+   
+    },
+    "network": {
+    "interface": "enp6s0", // or "eth0", or leave empty for auto
+    "format": "{ifname} {ipaddr} {icon}",
+    "format-disconnected": "󰖪 Disconnected",
+    "format-ethernet": "󰈀 {ifname} {ipaddr}",
+    "format-wifi": "󰖩 {essid} {signalStrength}%",
+    "tooltip": true,
+    "on-click" : "nm-connection-editor"
+},
+
+  "custom/menu" : {
+   "format" : "󰮫",
+   "on-click" : "nm-connection-editor",
+   "on-click-right" : "wlogout",
+   "tooltip-format": "Menu/Logout"
+
+
+  }
+}]
